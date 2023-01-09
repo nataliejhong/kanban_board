@@ -1,4 +1,4 @@
-
+import kanbanAPI from "../api/kanbanAPI"
 
 export default class Item{
     constructor(id, content){
@@ -12,11 +12,28 @@ export default class Item{
         const onBlur = () => {
             const newContent = this.elements.input.textContent.trim()
 
-            if(newContent == this.content){
+            if(newContent === this.content){
                 return
             }
+
             this.content = newContent
+
+            kanbanAPI.updateItem(id, {
+                content: this.content
+            })
         }
+
+        this.elements.input.addEventListener("blur", onBlur)
+        this.elements.root.addEventListener("dbclick", () =>
+        {
+            const check = confirm("Are you sure you want to delete?")
+
+            if(check){
+                kanbanAPI.deleteItem(id)
+                this.elements.input.removeEventListener("blur", onBlur)
+                this.elements.root.parentElement.removeChild(this.elements.root)
+            }
+        })
     }
     
     static createRoot(){
