@@ -1,4 +1,5 @@
-import kanbanAPI from "../api/kanbanAPI"
+import kanbanAPI from "../api/kanbanAPI.js"
+import Item from "../view/Item.js"
 
 export default class Column{
     constructor(id, title){
