@@ -1,6 +1,6 @@
 import kanbanAPI from "../api/kanbanAPI.js"
-import Item from "../view/Item.js"
-import DropZone from "../api/DropZone.js"
+import Item from "./Item.js"
+import DropZone from "./DropZone.js"
 
 export default class Column{
     constructor(id, title){
@@ -34,13 +34,13 @@ export default class Column{
             <div class="kanban_column">
                 <div class="kanban_column-title"></div>
                 <div class="kanban_column-items"></div>
-                <div class="kanban_column-item"></div>
                 <button class="kanban_add-item" type="button">+Add</button>
             </div>
         `).children[0]
     }
 
     renderItem(data){
+        console.log(data.id, data.content)
         const item = new Item(data.id, data.content)
         this.elements.items.appendChild(item.elements.root)
     }
