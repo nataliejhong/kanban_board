@@ -16,7 +16,7 @@ export default class Column{
         this.elements.root.dataset.id = id
         this.elements.title.textContent = title
 
-        this.elements.items.addEventListener(topDropZone)
+        this.elements.items.appendChild(topDropZone)
 
         this.elements.addItem.addEventListener("click",
         () => {
