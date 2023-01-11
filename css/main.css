@@ -28,7 +28,7 @@
 .kanban_item-input{
     padding: 10px 15px;
     box-sizing: border-box;
-    background-color: white;
+    background: white;
     border-radius: 5px;
     cursor: pointer;
 }

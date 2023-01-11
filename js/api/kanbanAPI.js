@@ -13,7 +13,7 @@ export default class kanbanAPI{
         const column = data.find(column => column.id == columnId)
         const item = {
             id: Math.floor(Math.random() * 100000),
-            content
+            content,
         }
 
         if(!column){
@@ -44,7 +44,7 @@ export default class kanbanAPI{
         item.content = newProps.content === undefined ? item.content: newProps.content
 
         if(newProps.columnId !== undefined && newProps.position !== undefined){
-            const targetColumn = data.find(column => column.id == columnId)
+            const targetColumn = data.find(column => column.id == newProps.columnId)
 
             if(!targetColumn){
                 throw new Error("Target column not found")
@@ -67,6 +67,7 @@ export default class kanbanAPI{
                 column.items.splice(column.items.indexIf(item), 1)
             }
         }
+        save(data)
 
     }
 }
@@ -98,5 +99,5 @@ function read(){
 }
 
 function save(){
-    localStorage.setItem("kanban-data",)
+    localStorage.setItem("kanban-data", JSON.stringify(data))
 }
